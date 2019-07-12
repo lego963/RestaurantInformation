@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Configuration;
 using RestaurantInformation.Core;
@@ -13,6 +14,9 @@ namespace RestaurantInformation.Pages.Restaurants
         public string Message { get; set; }
         public IEnumerable<Restaurant> Restaurants { get; set; }
 
+        [BindProperty(SupportsGet = true)]
+        public string SearchTerm { get; set; }
+
         public ListModel(IConfiguration configuration, IRestaurantData restaurantData)
         {
             this.configuration = configuration;
@@ -20,8 +24,9 @@ namespace RestaurantInformation.Pages.Restaurants
         }
         public void OnGet()
         {
+
             Message = configuration["Message"];
-            Restaurants = restaurantData.GetAll();
+            Restaurants = restaurantData.GetREstaurantsByName(SearchTerm);
         }
     }
 }
