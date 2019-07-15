@@ -5,10 +5,11 @@ namespace RestaurantInformation.Data
 {
     public interface IRestaurantData
     {
-        IEnumerable<Restaurant> GetREstaurantsByName(string name);
+        IEnumerable<Restaurant> GetRestaurantsByName(string name);
         Restaurant GetById(int? id);
         Restaurant Update(Restaurant updatedRestaurant);
         Restaurant Add(Restaurant newRestaurant);
+        Restaurant Delete(int id);
         int Commit();
     }
 }

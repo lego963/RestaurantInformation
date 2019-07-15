@@ -43,12 +43,22 @@ namespace RestaurantInformation.Data
             return restaurant;
         }
 
+        public Restaurant Delete(int id)
+        {
+            var restaurant = restaurants.FirstOrDefault(r => r.Id == id);
+            if (restaurant != null)
+            {
+                restaurants.Remove(restaurant);
+            }
+            return restaurant;
+        }
+
         public int Commit()
         {
             return 0;
         }
 
-        public IEnumerable<Restaurant> GetREstaurantsByName(string name = null)
+        public IEnumerable<Restaurant> GetRestaurantsByName(string name = null)
         {
             return from r in restaurants
                    where string.IsNullOrEmpty(name) || r.Name.StartsWith(name)

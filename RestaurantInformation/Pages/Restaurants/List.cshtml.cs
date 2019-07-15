@@ -26,7 +26,7 @@ namespace RestaurantInformation.Pages.Restaurants
         {
 
             Message = configuration["Message"];
-            Restaurants = restaurantData.GetREstaurantsByName(SearchTerm);
+            Restaurants = restaurantData.GetRestaurantsByName(SearchTerm);
         }
     }
 }
